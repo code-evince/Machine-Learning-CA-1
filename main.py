@@ -19,6 +19,7 @@ def decode(num):
         num=num+55
         print(num)
         print(chr(num))
+        num = chr(num)
     return num
 
 
@@ -54,7 +55,7 @@ def mouse_event(event):
 (root, model) = initialize()
 button_frame = tk.Frame(root)
 
-canvas = tk.Canvas(root, bg="black", height=300, width=300)
+canvas = tk.Canvas(root, bg="black", height=784, width=784)
 canvas.bind('<B1-Motion>', mouse_event)
 clear_button = tk.Button(button_frame, text="Clear", command=clear)
 predict_button = tk.Button(button_frame, text="Predict", command=predict)
