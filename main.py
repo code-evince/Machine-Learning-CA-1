@@ -30,19 +30,19 @@ def clear():
     canvas.delete("all")
 
 def predict():
-    # Step 1 : Getting the canvas ID
+
 
     canvas_handle = canvas.winfo_id()
-    # Step 2 : Get the canvas from ID
+
     canvas_rect = win32gui.GetWindowRect(canvas_handle)
-    # Step 3 : Get the canvas content
+
     img = ImageGrab.grab(canvas_rect)
-    # Step 4 : Resize the content for CNN input
+
     img = img.resize((28, 28)).convert("L")
     img = np.array(img)
     img = img.reshape((1, 28, 28, 1))
     img = img / 255.0
-    # Step 5 : Predict the image drawn
+
     Y = model.predict([img])[0]
     tkinter.messagebox.showinfo("Prediction", "it's a " + str(decode(np.argmax(Y))))
 
